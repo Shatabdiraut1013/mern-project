@@ -1,0 +1,7 @@
+1. Create a server that is writing a hello world using express.
+2. Create a middleware.
+3. Create MongoDB Atlas connection.
+4. Securing our code with dotenv.
+5. We will make model folder n inside it we Create userSchema file
+6. Getting data back
+

@@ -1,0 +1,24 @@
+# it will always work with top to bottom in express whatever comes top it will execute first
+# make sure always run 
+1. we create server
+
+2. WE work with middlewares
+# why use middlewares -> becaz user jab tak login nahi hota han usse hum about me bala page nahi dikha sakte han
+# in middlewares three parameters r there that is req,res,next where next means iske baad jo han woh kaaam kar do
+# make a folder name server than put all the files there
+
+3. We create mongodb atlas connection
+mongodb+srv://shatabdi13:<password>@cluster0.rstdj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+4. We secure our code using dotenv
+# we use dotenv becaz to secure our important credentials
+# npm i dotenv -> than make file config.env
+# we will put our config.env file in gitignore
+
+## mongodb connection we use everywhere so we make a folder db than a file conn.js inside it so that we will require that file instead of writing that code
+
+5. create userSchema.js file inside the model folder
+
+6. Getting our data back -> Inside the app.js file we will write less code so we will create a router folder where our all routers r there
+-> than for Getting our data create a collection in postman of post request in postman u can see mern
+-> in postman go to headers in post request bala in key write Content-Type n value write application/json than go to body click on raw tahn select json inside the {} -> write
