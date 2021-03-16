@@ -22,3 +22,5 @@ mongodb+srv://shatabdi13:<password>@cluster0.rstdj.mongodb.net/myFirstDatabase?r
 6. Getting our data back -> Inside the app.js file we will write less code so we will create a router folder where our all routers r there
 -> than for Getting our data create a collection in postman of post request in postman u can see mern
 -> in postman go to headers in post request bala in key write Content-Type n value write application/json than go to body click on raw tahn select json inside the {} -> write
+
+7. Storing the user data in online database -> we will change in auth.js

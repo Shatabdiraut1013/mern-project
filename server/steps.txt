@@ -4,4 +4,4 @@
 4. Securing our code with dotenv.
 5. We will make model folder n inside it we Create userSchema file
 6. Getting data back
-
+7. Storing the user data in online database
