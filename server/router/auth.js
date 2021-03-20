@@ -8,37 +8,63 @@ router.get("/", (req, res) => {
     res.send("hello from home side of router");
 })
 
-//for get our data from postman
-router.post("/register", (req, res) => {
-    // console.log(req.body); // for postman bala
-    // res.json({ message: req.body })  //for postman
-    // now we only want name n email
-    // object destructing instead of writing the console.log(req.body.name) we will do
-    // inside the {} -> write the same thing what we will write in userSchema.js
+// using async-await
+router.post("/register", async (req, res) => {
     const { name, email, phone, work, password, cpassword } = req.body;
-    // for validation
-    // means inn main se koi bhi field nahi deta han toh error dega
+
     if (!name || !email || !phone || !work || !password || !cpassword) {
         res.status(400).json({ error: "please filled the field properly" })
     }
 
-    // email->db ka email n email-> user jo email de raha h
-    // if email is already there then n user is already exist
-    User.findOne({ email: email })
-        .then((userexist) => {
-            if (userexist) {
-                return res.status(400).json({ error: "email already exist" })
-            }
+    try {
+        // await means ya toh future main data millega ya reject hoga thats why we store in const
+        const userexist = await User.findOne({ email: email })
 
-            // if user is not exist than he must be visit first time than he will registerd first than it will store in db which is in atlas through postman we will send our data n it will send in atlas
-            const user = new User({ name, email, phone, work, password, cpassword })
+        if (userexist) {
+            return res.status(400).json({ error: "email already exist" })
+        }
 
-            user.save().then(() => {
-                res.status(201).json({ message: "user registered successfully" })
-            }).catch((e) => res.status(500).json({ error: "Failed to Registerd" }))
+        const user = new User({ name, email, phone, work, password, cpassword })
 
-        }).catch(e => {
-            console.log(e);
-        });
-})
+        await user.save()
+
+        res.status(201).json({ message: "user registered successfully" })
+
+    } catch (error) {
+        console.log(error);
+    }
+
+});
+
+// create a login route
+router.post("/login", async (req, res) => {
+    try {
+        const { email, password } = req.body
+
+        // email n password must be there
+        if (!email || !password) {
+            res.status(400).json({ error: "pls fill the data" })
+        }
+
+        // for read data from db that email must be registered
+        // email -> for db n email -> whivh the user is login 
+        const userLogin = await User.findOne({ email: email })
+
+        console.log(userLogin);
+
+        //userlogin ke andhar agar data nahi han
+        if (!userLogin) {
+            res.status(400).json({ error: "user error" })
+            // else user ke andhar correct data aa chukka han
+        } else {
+            res.json({ message: "user signin successfully" })
+        }
+
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
 module.exports = router;

@@ -4,4 +4,6 @@
 4. Securing our code with dotenv.
 5. We will make model folder n inside it we Create userSchema file
 6. Getting data back
-7. Storing the user data in online database
+7. Using promises for Storing the user data in online database
+8. Using async-await for Storing the user data in online database
+9. Create a login route Check-> (no empty fields, email must be registered already, password should me matched, dont mention on the website that email is not valid or password is not valid due to this hackers can easily attack on ur system so mention only invalid credentials)
